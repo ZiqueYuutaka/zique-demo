@@ -16,11 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zique.demo.dto.HelloBean;
 import com.zique.demo.dto.Todo;
 import com.zique.demo.service.DataService;
 
-@CrossOrigin(origins="http://localhost:4200")
+//@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class DemoRestController {
@@ -29,31 +28,40 @@ public class DemoRestController {
 	private DataService dataService;
 
 	@GetMapping("/test")
+	/**
+	 * Test endpoint to verify connection and system is
+	 * running.
+	 * @return
+	 */
 	public String hello(){
 		return "hello world";
 	}
 	
-	@GetMapping("/users/{userName}/todos")
-	public List<Todo> getAllTodos(@PathVariable String userName){
-		System.out.println(this.getClass().getName() + ": getting all todos for  "+userName+"...");
+	@GetMapping("/todos")
+	/**
+	 * Returns all of the Todo items.
+	 * @return
+	 */
+	public List<Todo> getAllTodos(){
+		System.out.println(this.getClass().getName() + ": getting all todos.");
 		
 		ArrayList<Todo> todos = new ArrayList<>();
 		
-		todos = dataService.getAllTodos(userName);
+		todos = dataService.getAllTodos();
 		
 		return todos;
 	}
 	
-	@GetMapping("/users/{userName}/todos/{id}")
-	public Todo getTodo(@PathVariable String userName, @PathVariable long id){
+	@GetMapping("/todos/{id}")
+	public Todo getTodo(@PathVariable long id){
 		return dataService.findById(id);
 	}
 	
-	@DeleteMapping("/users/{userName}/todos/{todoId}")
-	public ResponseEntity<Void> deleteTodoById(@PathVariable String userName, @PathVariable long todoId){
-		System.out.println("Delete Todo with id " + todoId);
+	@DeleteMapping("/todos/{id}")
+	public ResponseEntity<Void> deleteTodoById( @PathVariable long id){
+		System.out.println("Delete Todo with id " + id);
 		
-		Todo todo = dataService.deleteTodoById(todoId);
+		Todo todo = dataService.deleteTodoById(id);
 		if(todo!=null){
 			System.out.println("deleted " + todo.toString());
 			return ResponseEntity.noContent().build();
@@ -62,8 +70,8 @@ public class DemoRestController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@PutMapping("/users/{userName}/todos/{id}")
-	public ResponseEntity<Todo> updateTodo(@PathVariable String userName, @PathVariable long id,
+	@PutMapping("/todos/{id}")
+	public ResponseEntity<Todo> updateTodo(@PathVariable long id,
 						   @RequestBody Todo todo){
 		System.out.println("===>>>Putting existing todo: " + todo);
 		
@@ -72,8 +80,8 @@ public class DemoRestController {
 		return new ResponseEntity<Todo>(updated,HttpStatus.OK);
 	}
 	
-	@PostMapping("/users/{userName}/todos")
-	public ResponseEntity<Todo> createTodo(@PathVariable String userName, @RequestBody Todo todo){
+	@PostMapping("/todos")
+	public ResponseEntity<Todo> createTodo(@RequestBody Todo todo){
 		System.out.println("===>>>Posting new todo: " + todo);
 		
 		Todo saved = dataService.save(todo);

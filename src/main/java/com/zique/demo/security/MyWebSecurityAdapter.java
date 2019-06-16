@@ -22,7 +22,7 @@ public class MyWebSecurityAdapter extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()//allows all preflight OPTIONS requests
 		.anyRequest().authenticated()//permitted requests as long as authenticated
-		.and().httpBasic();//permite requests using Basic Auth
+		.and().httpBasic();//permit requests using Basic Auth
 		super.configure(http);
 	}
 

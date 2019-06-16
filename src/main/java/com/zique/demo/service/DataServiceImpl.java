@@ -15,7 +15,7 @@ public class DataServiceImpl implements DataService {
 	private DataBase database;
 
 	@Override
-	public ArrayList<Todo> getAllTodos(String userName) {
+	public ArrayList<Todo> getAllTodos() {
 		// TODO Auto-generated method stub
 		return database.getAllTodos();
 	}

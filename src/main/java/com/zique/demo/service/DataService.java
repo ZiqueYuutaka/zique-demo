@@ -5,7 +5,7 @@ import com.zique.demo.dto.Todo;
 
 public interface DataService {
 
-	public ArrayList<Todo> getAllTodos(String userName);
+	public ArrayList<Todo> getAllTodos();
 	
 	public Todo deleteTodoById(long todoId);
 	
