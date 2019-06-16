@@ -27,21 +27,21 @@ public class DemoRestController {
 	@Autowired
 	private DataService dataService;
 
-	@GetMapping("/test")
 	/**
 	 * Test endpoint to verify connection and system is
 	 * running.
 	 * @return
 	 */
+	@GetMapping("/test")
 	public String hello(){
-		return "hello world";
+		return "successful authorization and connection";
 	}
 	
-	@GetMapping("/todos")
 	/**
 	 * Returns all of the Todo items.
 	 * @return
 	 */
+	@GetMapping("/todos")
 	public List<Todo> getAllTodos(){
 		System.out.println(this.getClass().getName() + ": getting all todos.");
 		
