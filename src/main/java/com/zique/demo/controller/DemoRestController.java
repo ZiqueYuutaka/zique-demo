@@ -28,23 +28,9 @@ public class DemoRestController {
 	@Autowired
 	private DataService dataService;
 
-	@GetMapping("/hello-world")
+	@GetMapping("/test")
 	public String hello(){
-		return "hello";
-	}
-	
-	@GetMapping("/hello-world-bean")
-	public HelloBean helloBean(){
-		System.out.println(this.getClass().getName() + " helloBean() called...");
-		//throw new RuntimeException("There was an error in helloBean()");
-		return new HelloBean("hello world");
-	}
-	
-	@GetMapping("/hello-world-bean/{beanParam}")
-	public HelloBean helloBean(@PathVariable String beanParam){
-		System.out.println(this.getClass().getName() + " helloBean() called with parameter "+beanParam+"...");
-		//throw new RuntimeException("There was an error in helloBean()");
-		return new HelloBean("hello world " +beanParam);
+		return "hello world";
 	}
 	
 	@GetMapping("/users/{userName}/todos")
