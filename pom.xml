@@ -12,6 +12,7 @@
 	<artifactId>zique-demo</artifactId>
 	<version>1.0.1</version>
 	<name>zique-demo</name>
+	<packaging>war</packaging>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
