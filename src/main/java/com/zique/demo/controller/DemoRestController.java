@@ -70,9 +70,8 @@ public class DemoRestController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@PutMapping("/todos/{id}")
-	public ResponseEntity<Todo> updateTodo(@PathVariable long id,
-						   @RequestBody Todo todo){
+	@PutMapping("/todos")
+	public ResponseEntity<Todo> updateTodo(@RequestBody Todo todo){
 		System.out.println("===>>>Putting existing todo: " + todo);
 		
 		Todo updated = dataService.save(todo);
