@@ -18,6 +18,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<start-class>com.zique.demo.DemoApplication</start-class>
 	</properties>
 
 	<dependencies>
