@@ -1,11 +1,11 @@
 package com.zique.demo.service;
-import java.util.ArrayList;
+import java.util.List;
 
 import com.zique.demo.dto.Todo;
 
 public interface DataService {
 
-	public ArrayList<Todo> getAllTodos();
+	public List<Todo> getAllTodos();
 	
 	public Todo deleteTodoById(long todoId);
 	

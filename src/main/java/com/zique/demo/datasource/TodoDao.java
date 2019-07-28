@@ -8,10 +8,10 @@ public interface TodoDao {
 	
 	public List<Todo> findAll();
 	
-	public Todo findById(int id);
+	public Todo findById(long id);
 	
-	public Todo save(Todo employee);
+	public Todo save(Todo todo);
 	
-	public String deleteById(int id);
+	public Todo deleteById(long id);
 
 }

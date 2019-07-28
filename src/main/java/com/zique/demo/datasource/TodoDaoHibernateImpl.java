@@ -40,7 +40,7 @@ public class TodoDaoHibernateImpl implements TodoDao {
 	}
 
 	@Override
-	public Todo findById(int id) {
+	public Todo findById(long id) {
 		// Get a hibernate session to database
 		Session session = entityManager.unwrap(Session.class);
 
@@ -67,10 +67,13 @@ public class TodoDaoHibernateImpl implements TodoDao {
 	}
 
 	@Override
-	public String deleteById(int id) {
+	public Todo deleteById(long id) {
 		// Get a hibernate session to database
 		Session session = entityManager.unwrap(Session.class);
-
+		
+		//find the todo by id and hold on to it for return
+		Todo temp = this.findById(id);
+		
 		// create a query for deleting Todo entity by id
 		Query query = 
 				session.createQuery("delete from Todo where id=:id");
@@ -79,7 +82,7 @@ public class TodoDaoHibernateImpl implements TodoDao {
 		
 		query.executeUpdate();
 		
-		return "Successful delete";
+		return temp;
 	}
 
 }
